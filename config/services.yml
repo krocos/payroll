@@ -1,0 +1,6 @@
+services:
+
+    # @doctrine.org.entity_manager
+
+    command.sheet:
+        class: Payroll\Command\SheetCommand

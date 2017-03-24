@@ -1,0 +1,8 @@
+#!/usr/bin/php
+<?php
+
+use Payroll\Application\ApplicationRunner;
+
+require_once __DIR__.'/../bootstrap.php';
+
+(new ApplicationRunner())->run();
