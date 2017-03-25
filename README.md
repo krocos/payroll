@@ -4,9 +4,9 @@
 
 `delete (-i | —item) <номер>` — удаляет запись из sheet
 
-`display (-f |—format) <(json|xml|csv)> (-r | —hourlyrate) <hourly rate float> —id` — записи из sheet в разных форматах, если опция —id предоставлена, показывать id записей
+`display [-r | —hourlyrate <hourly rate float>] [—id]` — записи из sheet, если опция —id предоставлена, показывать id записей
 
-`manual <start date> <end date> —note "<note here>"` — создает мануальное время
+`manual <start date> <end date> [—note "<note here>"]` — создает мануальное время
 
 `now` — показывает какая задача сейчас идет
 

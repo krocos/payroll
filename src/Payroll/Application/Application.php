@@ -34,6 +34,7 @@ class Application
                 $container->get('command.start')->setContainer($container),
                 $container->get('command.stop')->setContainer($container),
                 $container->get('command.now')->setContainer($container),
+                $container->get('command.display')->setContainer($container),
             ]
         );
 
