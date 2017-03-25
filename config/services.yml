@@ -1,6 +1,10 @@
 services:
 
-    # @doctrine.org.entity_manager
+    # @doctrine.orm.entity_manager
 
     command.sheet:
         class: Payroll\Command\SheetCommand
+
+    manager.sheet_manager:
+        class: Payroll\Manager\SheetManager
+        arguments: ['@doctrine.orm.entity_manager']

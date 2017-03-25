@@ -14,7 +14,7 @@ class ApplicationRunner
     /**
      * @return Application
      */
-    public function createApplication(): Application
+    private function createApplication(): Application
     {
         return new Application();
     }

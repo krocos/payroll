@@ -30,23 +30,26 @@ class Application
 
         $application->addCommands(
             [
-                $container->get('command.sheet'),
+                $container->get('command.sheet')->setContainer($container),
             ]
         );
 
         $application->run();
     }
 
-    public function createEntityManager(): EntityManager
+    private function createEntityManager(): EntityManager
     {
         return EntityManager::create(
             [
                 'driver' => 'pdo_sqlite',
-                'path' => __DIR__.'/../../var/database.sqlite',
+                'path' => __DIR__.'/../../../var/database.sqlite',
             ],
             Setup::createAnnotationMetadataConfiguration(
                 [__DIR__.'/../Entity'],
-                true
+                true,
+                null,
+                null,
+                false
             )
         );
     }
@@ -54,7 +57,7 @@ class Application
     /**
      * @return CommandlineApplication
      */
-    public function createCommandlineApplication(): CommandlineApplication
+    private function createCommandlineApplication(): CommandlineApplication
     {
         return new CommandlineApplication();
     }
