@@ -22,7 +22,7 @@ class ItemManager
         $this->entityManager = $entityManager;
     }
 
-    public function startItem(OutputInterface $output)
+    public function startItem(OutputInterface $output, string $note = null)
     {
         $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
         // Нашли активный лист
@@ -40,6 +40,7 @@ class ItemManager
                 // Создаем новый интервал
                 $item = (new Item())
                     ->setStartDate(new \DateTime())
+                    ->setNote($note)
                     ->setSheet($sheet);
                 $this->entityManager->persist($item);
                 $this->entityManager->flush();

@@ -104,7 +104,7 @@ class Item
      * @param string $note
      * @return Item
      */
-    public function setNote(string $note): Item
+    public function setNote(?string $note): Item
     {
         $this->note = $note;
         return $this;
