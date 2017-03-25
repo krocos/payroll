@@ -31,6 +31,8 @@ class Application
         $application->addCommands(
             [
                 $container->get('command.sheet')->setContainer($container),
+                $container->get('command.start')->setContainer($container),
+                $container->get('command.stop')->setContainer($container),
             ]
         );
 

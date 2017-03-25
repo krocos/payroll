@@ -63,10 +63,8 @@ class SheetManager
                     if ($activeSheet && $activeSheetOpenItem = $this->entityManager->getRepository(Item::class)->getSheetOpenItem($activeSheet)) {
                         // Закрываем активную задачу активного итема
                         $activeSheetOpenItem->setEndDate(new \DateTime());
-                        // Строковое представление только что закрытой активной задачи активного листа
-                        $activeSheetOpenItemStringRepresentation = $activeSheetOpenItem->getNote() ?? '#'.$activeSheetOpenItem->getId();
                         // Сообщаем что закрыли активную задачу активного листа
-                        $output->writeln("Активная задача <fg=blue>{$activeSheetOpenItemStringRepresentation}</> листа <fg=blue>{$activeSheet->getName()}</> закрыта.");
+                        $output->writeln("Активная задача <fg=blue>{$activeSheetOpenItem}</> листа <fg=blue>{$activeSheet->getName()}</> закрыта.");
                     }
                     // Если есть активный лист
                     if ($activeSheet) {
@@ -89,10 +87,8 @@ class SheetManager
                 if ($activeSheet && $activeSheetOpenItem = $this->entityManager->getRepository(Item::class)->getSheetOpenItem($activeSheet)) {
                     // Закрываем активную задачу активного итема
                     $activeSheetOpenItem->setEndDate(new \DateTime());
-                    // Строковое представление только что закрытой активной задачи активного листа
-                    $activeSheetOpenItemStringRepresentation = $activeSheetOpenItem->getNote() ?? '#'.$activeSheetOpenItem->getId();
                     // Сообщаем, что задача активного итема закрыта
-                    $output->writeln("Активная задача <fg=blue>{$activeSheetOpenItemStringRepresentation}</> листа <fg=green>{$activeSheet->getName()}</> закрыта.");
+                    $output->writeln("Активная задача <fg=blue>{$activeSheetOpenItem}</> листа <fg=green>{$activeSheet->getName()}</> закрыта.");
                 }
                 // Если есть активный лист
                 if ($activeSheet) {

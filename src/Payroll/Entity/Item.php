@@ -77,7 +77,7 @@ class Item
     /**
      * @return \DateTime
      */
-    public function getEndDate(): \DateTime
+    public function getEndDate(): ?\DateTime
     {
         return $this->endDate;
     }
@@ -95,7 +95,7 @@ class Item
     /**
      * @return string
      */
-    public function getNote(): string
+    public function getNote(): ?string
     {
         return $this->note;
     }
@@ -126,5 +126,10 @@ class Item
     {
         $this->sheet = $sheet;
         return $this;
+    }
+
+    function __toString()
+    {
+        return $this->getNote() ?? '#'.$this->getId();
     }
 }

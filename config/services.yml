@@ -5,6 +5,16 @@ services:
     command.sheet:
         class: Payroll\Command\SheetCommand
 
+    command.start:
+        class: Payroll\Command\StartCommand
+
+    command.stop:
+        class: Payroll\Command\StopCommand
+
     manager.sheet_manager:
         class: Payroll\Manager\SheetManager
+        arguments: ['@doctrine.orm.entity_manager']
+
+    manager.item_manager:
+        class: Payroll\Manager\ItemManager
         arguments: ['@doctrine.orm.entity_manager']
