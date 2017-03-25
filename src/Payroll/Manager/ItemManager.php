@@ -72,4 +72,21 @@ class ItemManager
             $output->writeln('Не выбран лист в котором надо останавливать интервал.');
         }
     }
+
+    public function now(OutputInterface $output)
+    {
+        /** @var Sheet|null $sheet */
+        $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
+        if ($sheet) {
+            /** @var Item $sheetOpenItem */
+            $sheetOpenItem = $this->entityManager->getRepository(Item::class)->getSheetOpenItem($sheet);
+            if ($sheetOpenItem) {
+                $output->writeln("Выбран <fg=green>{$sheet->getName()}</> лист, идет время интервала <fg=green>{$sheetOpenItem}</> c <fg=magenta>{$sheetOpenItem->getStartDate()->format('Y-m-d H:i')}</>.");
+            } else {
+                $output->writeln("Выбран <fg=green>{$sheet->getName()}</> лист, время не идет.");
+            }
+        } else {
+            $output->writeln('Лист не выбран.');
+        }
+    }
 }

@@ -11,6 +11,9 @@ services:
     command.stop:
         class: Payroll\Command\StopCommand
 
+    command.now:
+        class: Payroll\Command\NowCommand
+
     manager.sheet_manager:
         class: Payroll\Manager\SheetManager
         arguments: ['@doctrine.orm.entity_manager']
