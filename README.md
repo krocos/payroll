@@ -6,13 +6,21 @@
 
 ## Install
 
+Экспортируем или в `.bashrc` или `.zshrc` переменную
+
+`$ export COMPOSER_HOME=$HOME/.config/composer`
+
+и изменяем `$PATH`
+
+`$ export PATH=$COMPOSER_HOME/vendor/bin:$PATH`
+
+Затем устанавливаем
+
 `$ composer global require krocos/payroll:dev-master`
 
 Затем можно использовать как
 
 `$ payroll`
-
-если добавить в `$PATH` путь к глобальной `bin` директории композера.
 
 ## Help
 
