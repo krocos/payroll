@@ -1,3 +1,3 @@
 <?php
 
-require_once $_ENV['COMPOSER_HOME'].'/vendor/autoload.php';
+require_once $_SERVER['COMPOSER_HOME'].'/vendor/autoload.php';
