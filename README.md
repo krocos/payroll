@@ -6,7 +6,7 @@
 
 ## Install
 
-`$ composer global require krocos/payroll`
+`$ composer global require krocos/payroll:dev-master`
 
 Затем можно использовать как
 
