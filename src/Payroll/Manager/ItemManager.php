@@ -135,7 +135,7 @@ class ItemManager
         }
     }
 
-    public function edit(OutputInterface $output, int $itemId, string $start = null, string $end = null, string $note = null)
+    public function edit(OutputInterface $output, int $itemId, string $start = null, string $end = null, string $note = null, string $append = null)
     {
         /** @var Sheet|null $sheet */
         $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
@@ -153,6 +153,9 @@ class ItemManager
                 }
                 if ($note) {
                     $item->setNote($note);
+                }
+                if ($append) {
+                    $item->setNote($item->getNote().', '.$append);
                 }
                 $this->entityManager->flush();
                 $output->writeln("Интервал <fg=green>{$item}</> листа <fg=green>{$sheet->getName()}</> был отредактирован.");
