@@ -37,6 +37,7 @@ class Application
                 $container->get('command.display')->setContainer($container),
                 $container->get('command.manual')->setContainer($container),
                 $container->get('command.delete')->setContainer($container),
+                $container->get('command.edit')->setContainer($container),
             ]
         );
 

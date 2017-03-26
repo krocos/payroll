@@ -117,18 +117,47 @@ class ItemManager
         }
     }
 
-    public function delete(OutputInterface $output, int $inputId)
+    public function delete(OutputInterface $output, int $itemId)
     {
         /** @var Sheet|null $sheet */
         $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
         if ($sheet) {
-            $item = $this->entityManager->getRepository(Item::class)->find($inputId);
+            $item = $this->entityManager->getRepository(Item::class)->findOneBy(['id' => $itemId, 'sheet' => $sheet]);
             if ($item) {
                 $this->entityManager->remove($item);
                 $this->entityManager->flush();
                 $output->writeln("Интервал <fg=blue>{$item}</> удален.");
             } else {
                 $output->writeln("Интервал для удаления не найден в листе <fg=green>{$sheet->getName()}</>.");
+            }
+        } else {
+            $output->writeln('Лист не выбран.');
+        }
+    }
+
+    public function edit(OutputInterface $output, int $itemId, string $start = null, string $end = null, string $note = null)
+    {
+        /** @var Sheet|null $sheet */
+        $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
+        if ($sheet) {
+            /** @var Item $item */
+            $item = $this->entityManager->getRepository(Item::class)->findOneBy(['id' => $itemId, 'sheet' => $sheet]);
+            if ($item) {
+                if ($start) {
+                    $start = new \DateTime($start);
+                    $item->setStartDate($start);
+                }
+                if ($end) {
+                    $end = new \DateTime($end);
+                    $item->setEndDate($end);
+                }
+                if ($note) {
+                    $item->setNote($note);
+                }
+                $this->entityManager->flush();
+                $output->writeln("Интервал <fg=green>{$item}</> листа <fg=green>{$sheet->getName()}</> был отредактирован.");
+            } else {
+                $output->writeln("Интервал для редактирования не найден в листе <fg=green>{$sheet->getName()}</>.");
             }
         } else {
             $output->writeln('Лист не выбран.');

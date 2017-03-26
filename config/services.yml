@@ -23,6 +23,9 @@ services:
     command.delete:
         class: Payroll\Command\DeleteCommand
 
+    command.edit:
+        class: Payroll\Command\EditCommand
+
     manager.sheet_manager:
         class: Payroll\Manager\SheetManager
         arguments: ['@doctrine.orm.entity_manager']

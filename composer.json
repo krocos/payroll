@@ -1,7 +1,7 @@
 {
     "name": "krocos/payroll",
     "description": "Commandline time tracking tool",
-    "type": "project",
+    "type": "library",
     "license": "GPLv3",
     "authors": [
         {
