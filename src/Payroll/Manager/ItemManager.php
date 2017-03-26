@@ -116,4 +116,22 @@ class ItemManager
             $output->writeln('Лист не выбран.');
         }
     }
+
+    public function delete(OutputInterface $output, int $inputId)
+    {
+        /** @var Sheet|null $sheet */
+        $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
+        if ($sheet) {
+            $item = $this->entityManager->getRepository(Item::class)->find($inputId);
+            if ($item) {
+                $this->entityManager->remove($item);
+                $this->entityManager->flush();
+                $output->writeln("Интервал <fg=blue>{$item}</> удален.");
+            } else {
+                $output->writeln("Интервал для удаления не найден в листе <fg=green>{$sheet->getName()}</>.");
+            }
+        } else {
+            $output->writeln('Лист не выбран.');
+        }
+    }
 }

@@ -20,6 +20,9 @@ services:
     command.manual:
         class: Payroll\Command\ManualCommand
 
+    command.delete:
+        class: Payroll\Command\DeleteCommand
+
     manager.sheet_manager:
         class: Payroll\Manager\SheetManager
         arguments: ['@doctrine.orm.entity_manager']

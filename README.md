@@ -2,7 +2,7 @@
 
 `edit (-i | —item) <номер> —start "<date>" —end "<date>" —note "<note here>"`
 
-`delete (-i | —item) <номер>` — удаляет запись из sheet
+`delete <номер итема>` — удаляет запись из sheet
 
 `display [-r | —hourlyrate <hourly rate float>] [—id]` — записи из sheet, если опция —id предоставлена, показывать id записей
 
