@@ -38,6 +38,7 @@ class Application
                 $container->get('command.manual')->setContainer($container),
                 $container->get('command.delete')->setContainer($container),
                 $container->get('command.edit')->setContainer($container),
+                $container->get('command.init'),
             ]
         );
 

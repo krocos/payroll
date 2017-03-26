@@ -25,10 +25,5 @@
         "symfony/dependency-injection": "^3.2",
         "symfony/config": "^3.2",
         "symfony/yaml": "^3.2"
-    },
-    "scripts": {
-        "post-package-install": [
-            "Payroll\\Composer\\PostPackageInstall::createSchema"
-        ]
     }
 }

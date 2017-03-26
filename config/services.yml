@@ -26,6 +26,9 @@ services:
     command.edit:
         class: Payroll\Command\EditCommand
 
+    command.init:
+        class: Payroll\Command\InitCommand
+
     manager.sheet_manager:
         class: Payroll\Manager\SheetManager
         arguments: ['@doctrine.orm.entity_manager']
