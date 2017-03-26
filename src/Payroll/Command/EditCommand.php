@@ -48,7 +48,8 @@ class EditCommand extends Command
         }
 
         if (!is_null($note) && !is_null($append)) {
-            $output->writeln("Опции note и append не могут использоваться одновременно.");
+            $output->writeln("Опции <fg=cyan>note</> и <fg=cyan>append</> не могут использоваться одновременно.");
+            return;
         }
 
         $this->container->get('manager.item_manager')->edit($output, $input->getArgument('item_id'), $start, $end, $note, $append);
