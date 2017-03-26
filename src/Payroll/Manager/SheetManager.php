@@ -115,6 +115,7 @@ class SheetManager
         $sheets = $this->entityManager->getRepository(Sheet::class)->findAll();
         if (count($sheets) == 0) {
             $output->writeln('Ни одного листа не найдено.');
+            return;
         }
         /** @var Sheet $sheet */
         foreach ($sheets as $sheet) {
@@ -132,6 +133,7 @@ class SheetManager
         $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
         if (!$sheet) {
             $output->writeln("Ни один лист не активен на данный момент.");
+            return;
         }
         /** @var Item[] $items */
         $items = $this->entityManager->getRepository(Item::class)->findBy(['sheet' => $sheet], ['startDate' => 'ASC']);

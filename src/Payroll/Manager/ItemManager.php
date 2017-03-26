@@ -90,4 +90,30 @@ class ItemManager
             $output->writeln('Лист не выбран.');
         }
     }
+
+    public function addManualInterval(OutputInterface $output, string $startDate, string $endDate, string $note = null)
+    {
+        $startDate = new \DateTime($startDate);
+        $endDate = new \DateTime($endDate);
+
+        if ($endDate < $startDate) {
+            $output->writeln('Время начала интервала не может быть больше времени завершения.');
+            return;
+        }
+
+        /** @var Sheet|null $sheet */
+        $sheet = $this->entityManager->getRepository(Sheet::class)->findOneByActive(true);
+        if ($sheet) {
+            $item = (new Item())
+                ->setStartDate($startDate)
+                ->setEndDate($endDate)
+                ->setNote($note)
+                ->setSheet($sheet);
+            $this->entityManager->persist($item);
+            $this->entityManager->flush();
+            $output->writeln("Интервал <fg=cyan>{$item}</> добавлен в лист <fg=green>{$sheet->getName()}</>.");
+        } else {
+            $output->writeln('Лист не выбран.');
+        }
+    }
 }

@@ -17,6 +17,9 @@ services:
     command.display:
         class: Payroll\Command\DisplayCommand
 
+    command.manual:
+        class: Payroll\Command\ManualCommand
+
     manager.sheet_manager:
         class: Payroll\Manager\SheetManager
         arguments: ['@doctrine.orm.entity_manager']
